@@ -1,0 +1,19 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: web1
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 172.16.4.80:8848
+        namespace: test1
+seata:
+  tx-service-group: ${spring.application.name}-fescar-service-group
+  registry:
+    type: nacos
+    nacos:
+      namespace: ${spring.cloud.nacos.discovery.namespace}
+      server-addr: ${spring.cloud.nacos.discovery.server-addr}
